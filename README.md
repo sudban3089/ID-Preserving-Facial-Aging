@@ -58,7 +58,10 @@ python main.py --base configs/stable-diffusion/v1-finetune_unfrozen.yaml
                 --class_word person
   ```
 
-Note that we use personalized_captionandimage_base
+Note:
+1. `personalized_captionandimage.py` modifies the original script to include image-caption pairs. The age caption comes fromt he filename of the regularization set images.
+2. Change rare token in **line 11** of `personalized_captionandimage.py` and `personalized.py` to a rare identifier of your choice. It is currently hardcoded to *sks*.
+
 ## Acknowledgment
 This repository is heavily dependent with code borrowed from [Dreambooth Stable Diffusion](https://github.com/XavierXiao/Dreambooth-Stable-Diffusion) repository. All changes made in the scripts and config files need to be incorporated to reproduce the results from the conference paper
 
