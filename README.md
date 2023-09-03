@@ -2,7 +2,7 @@
 Identity-Preserving Aging of Face Images via Latent Diffusion Models [IJCB 2023]
 
 ## Usage
-Create the `ldm` environment by following the steps outlined in [Dreambooth Stable Diffusion](https://github.com/XavierXiao/Dreambooth-Stable-Diffusion)
+Create the `ldm` environment by following the steps outlined in [Dreambooth Stable Diffusion](https://github.com/XavierXiao/Dreambooth-Stable-Diffusion). Check `environment.yaml` file.
 
 ## Training
 
@@ -19,6 +19,9 @@ We need a **Regularization Set** that comprises images depicting individuals dep
 - old
   
 Download the Regularization Set used in our work or you can create your own regularization set but we cannot verify the performance with a custom regularization set. 
+
+### Fine-tuning using custom losses
+
 
 ## Acknowledgment
 This repository is heavily dependent with code borrowed from [Dreambooth Stable Diffusion](https://github.com/XavierXiao/Dreambooth-Stable-Diffusion) repository. All changes made in the scripts and config files need to be incorporated to reproduce the results from the conference paper
