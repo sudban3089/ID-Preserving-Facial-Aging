@@ -59,9 +59,22 @@ python main.py --base configs/stable-diffusion/v1-finetune_unfrozen.yaml
   ```
 
 Note:
-1. `personalized_captionandimage.py` modifies the original script to include image-caption pairs. The age caption comes fromt he filename of the regularization set images.
-2. Change rare token in **line 11** of `personalized_captionandimage.py` and `personalized.py` to a rare identifier of your choice. It is currently hardcoded to *sks*.
+1. `personalized_captionandimage.py` modifies the original script to include image-caption pairs. The age caption comes from the filename of the regularization set images.
+2. Change rare token in **line 11** of `personalized_captionandimage.py` and `personalized.py` to a rare identifier of your choice. It is currently set to *sks*.
+3. After fine-tuning, the checkpoints will be saved in `./logs/<job_name>/checkpoints`. You can change the `max_steps` in the config file.
 
+### Facial aging/de-aging synthesis
+
+After the completion of fine-tuning, you can generate photo on the trained individual by specifying the rare-token identifier (must match training), the `--class_word` and `age-label` denotes one of the six age groups indicated above.
+```
+python scripts/stable_txt2img.py --ddim_eta 0.0 
+                                 --n_samples 8 
+                                 --n_iter 1 
+                                 --scale 10.0 
+                                 --ddim_steps 100  
+                                 --ckpt /path/to/saved/checkpoint/from/training
+                                 --prompt "photo of a <rare-token> <class> as <age-label>" 
+```
 ## Acknowledgment
 This repository is heavily dependent with code borrowed from [Dreambooth Stable Diffusion](https://github.com/XavierXiao/Dreambooth-Stable-Diffusion) repository. All changes made in the scripts and config files need to be incorporated to reproduce the results from the conference paper
 
