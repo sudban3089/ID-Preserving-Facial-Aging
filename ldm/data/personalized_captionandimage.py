@@ -199,7 +199,7 @@ class PersonalizedBase(Dataset):
         else:
             filename = self.image_paths[i % self.num_images]
             filename_caption = filename.split('_')
-            filename_descr = filename_caption[2].split('/') # check the folder name in which you place your Regularization Set. This is for CelebA_Regularization_NEW
+            filename_descr = filename_caption[2].split('/') # check the folder name in which you place your Regularization Set. This is for CelebA_Regularization_Set
             text = f"A photo of a {filename_descr[1]}" # this picks up the caption which is the age label
             # text = random.choice(reg_templates_smallest).format(placeholder_string) # --replaced from original repo
             
