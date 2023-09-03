@@ -80,7 +80,7 @@ python scripts/stable_txt2img.py --ddim_eta 0.0
 
 - We perform face quality check using [EQFace](https://github.com/deepcam-cn/FaceQuality) where we download the pretrained model provided by the original authors and run `python test_quality.py --backbone backbone.pth --quality quality.path --file test_faces`, where `test_faces` indicate the age translated faces. We select a threshold of 0.4 to determine if a generated face should be retained or else, discarded.
 - We perform biometric matching (with ArcFace) and age computation using [deepface](https://github.com/serengil/deepface) library.
-- We use the official implementation of (AttGAN)[https://github.com/LynnHo/AttGAN-Tensorflow], (Talk-to-Edit)[https://github.com/yumingj/Talk-to-Edit] and (IPCGAN)[https://github.com/dawei6875797/Face-Aging-with-Identity-Preserved-Conditional-Generative-Adversarial-Networks] for baseline comparison.
+- We use the official implementation of [AttGAN](https://github.com/LynnHo/AttGAN-Tensorflow), [Talk-to-Edit](https://github.com/yumingj/Talk-to-Edit) and [IPCGAN](https://github.com/dawei6875797/Face-Aging-with-Identity-Preserved-Conditional-Generative-Adversarial-Networks) for baseline comparison.
 
 
 ## Acknowledgment
