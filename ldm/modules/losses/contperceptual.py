@@ -2,10 +2,11 @@ import torch
 import torch.nn as nn
 
 from taming.modules.losses.vqperceptual import *  # TODO: taming dependency yes/no?
+from facenet_pytorch import InceptionResnetV1
 
 
 class LPIPSWithDiscriminator(nn.Module):
-    def __init__(self, disc_start, logvar_init=0.0, kl_weight=1.0, pixelloss_weight=1.0,
+    def __init__(self, disc_start, logvar_init=0.0, kl_weight=1.0, biometric_Weight=1.0, pixelloss_weight=1.0,
                  disc_num_layers=3, disc_in_channels=3, disc_factor=1.0, disc_weight=1.0,
                  perceptual_weight=1.0, use_actnorm=False, disc_conditional=False,
                  disc_loss="hinge"):
@@ -16,6 +17,7 @@ class LPIPSWithDiscriminator(nn.Module):
         self.pixel_weight = pixelloss_weight
         self.perceptual_loss = LPIPS().eval()
         self.perceptual_weight = perceptual_weight
+        self.biometric_weight = biometric_weight
         # output log variance
         self.logvar = nn.Parameter(torch.ones(size=()) * logvar_init)
 
@@ -50,6 +52,23 @@ class LPIPSWithDiscriminator(nn.Module):
             p_loss = self.perceptual_loss(inputs.contiguous(), reconstructions.contiguous())
             rec_loss = rec_loss + self.perceptual_weight * p_loss
 
+        # Biometric loss
+        targets = inputs
+        outputs = reconstructions
+        biometric_loss_total = []
+        FRmodel = InceptionResnetV1(pretrained='vggface2').eval()
+        for s1 in range(0, targets.shape[0]): 
+            FR_emb1 = FRmodel((torch.transpose(targets[s1,:,:,:],1,2)).cpu().unsqueeze(0))
+            FR_emb2 = FRmodel((torch.transpose(outputs[s1,:,:,:],1,2)).cpu().unsqueeze(0))
+            biometric_loss = torch.abs(FR_emb1 - FR_emb2)
+            biometric_loss_total.append(biometric_loss)
+        
+        biometric_loss_total = torch.tensor(sum(biometric_loss_total)/len(biometric_loss_total))
+        if self.biometric_weight > 0:
+            weighted_biometric_loss = self.biometric_weight * biometric_loss_total
+
+        weighted_biometric_loss = torch.sum(weighted_biometric_loss.to("cuda:0"))
+
         nll_loss = rec_loss / torch.exp(self.logvar) + self.logvar
         weighted_nll_loss = nll_loss
         if weights is not None:
@@ -80,9 +99,10 @@ class LPIPSWithDiscriminator(nn.Module):
                 d_weight = torch.tensor(0.0)
 
             disc_factor = adopt_weight(self.disc_factor, global_step, threshold=self.discriminator_iter_start)
-            loss = weighted_nll_loss + self.kl_weight * kl_loss + d_weight * disc_factor * g_loss
+            loss = weighted_nll_loss + self.kl_weight * kl_loss + d_weight * disc_factor * g_loss + weighted_biometric_loss
 
             log = {"{}/total_loss".format(split): loss.clone().detach().mean(), "{}/logvar".format(split): self.logvar.detach(),
+                   "{}/biometric_loss".format(split): weighted_biometric_loss.detach().mean()
                    "{}/kl_loss".format(split): kl_loss.detach().mean(), "{}/nll_loss".format(split): nll_loss.detach().mean(),
                    "{}/rec_loss".format(split): rec_loss.detach().mean(),
                    "{}/d_weight".format(split): d_weight.detach(),
