@@ -1,5 +1,5 @@
 # ID-Preserving-Facial-Aging
-This is the official implementation of **Identity-Preserving Aging of Face Images via Latent Diffusion Models** that has been accepte din International Joint Conference in Biometrics (IJCB 2023). Refer to [our paper](https://arxiv.org/abs/2307.08585).
+This is the official implementation of **Identity-Preserving Aging of Face Images via Latent Diffusion Models** that has been accepted in International Joint Conference in Biometrics (IJCB 2023). Refer to [our paper](https://arxiv.org/abs/2307.08585).
 
 ## Usage
 Create the `ldm` environment by following the steps outlined in [Dreambooth Stable Diffusion](https://github.com/XavierXiao/Dreambooth-Stable-Diffusion). Check `environment.yaml` file.
