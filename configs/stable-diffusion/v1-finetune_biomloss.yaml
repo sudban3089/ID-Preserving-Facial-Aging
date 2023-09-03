@@ -1,6 +1,6 @@
 model:
   base_learning_rate: 1.0e-06
-  target: ldm.models.diffusion.ddpm_biomloss.LatentDiffusion
+  target: ldm.models.diffusion.ddpm.LatentDiffusion
   params:
     reg_weight: 1.0
     linear_start: 0.00085
