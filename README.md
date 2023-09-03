@@ -48,7 +48,7 @@ python main.py --base configs/stable-diffusion/v1-finetune_unfrozen.yaml
   ```
 - Contrastive loss
   ```
-  python main.py --base configs/stable-diffusion/v1-finetune_contrastloss.yaml 
+  python main.py --base configs/stable-diffusion/v1-finetune_contrastiveloss.yaml 
                 -t 
                 --actual_resume /path/to/original/stable-diffusion/sd-v1-4-full-ema.ckpt  
                 -n <job name> 
@@ -57,7 +57,8 @@ python main.py --base configs/stable-diffusion/v1-finetune_unfrozen.yaml
                 --reg_data_root /root/to/regularization/images 
                 --class_word person
   ```
-  
+
+Note that we use personalized_captionandimage_base
 ## Acknowledgment
 This repository is heavily dependent with code borrowed from [Dreambooth Stable Diffusion](https://github.com/XavierXiao/Dreambooth-Stable-Diffusion) repository. All changes made in the scripts and config files need to be incorporated to reproduce the results from the conference paper
 
