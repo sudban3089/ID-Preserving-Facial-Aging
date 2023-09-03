@@ -19,7 +19,7 @@ We need a **Regularization Set** that comprises images depicting distinct indivi
 - elderly
 - old
   
-Download the Regularization Set used in our work or you can create your own regularization set but we cannot verify the performance with a custom regularization set. 
+Download the [Regularization Set](https://drive.google.com/file/d/1GmOjT5B-Dq2zstSm9DRafPMX9E7rByhd/view?usp=drive_link) used in our work or you can create your own regularization set but we cannot verify the performance with a custom regularization set. 
 
 We need a **Training Set** that comprises images of a specific individual on whom the facial aging will be applied. The training set enables the diffusion model to learn the identity-specific charctristics during training that are then transferred at the time of generation of images with aging/de-aging.
 
