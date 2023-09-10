@@ -45,7 +45,7 @@ python main.py --base configs/stable-diffusion/v1-finetune_unfrozen.yaml
                 --gpus 0, 
                 --data_root /path-to-training-images-folder
                 --reg_data_root /path-to-regularization-images-folder
-                --class_word person
+                --class_word person --no-test
   ```
 - Contrastive loss
   ```
@@ -56,7 +56,7 @@ python main.py --base configs/stable-diffusion/v1-finetune_unfrozen.yaml
                 --gpus 0, 
                 --data_root /path-to-training-images-folder
                 --reg_data_root /path-to-regularization-images-folder
-                --class_word person
+                --class_word person --no-test
   ```
 
 Note:
