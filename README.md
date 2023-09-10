@@ -33,7 +33,7 @@ python main.py --base configs/stable-diffusion/v1-finetune_unfrozen.yaml
                 --gpus 0, 
                 --data_root /root/to/training/images 
                 --reg_data_root /root/to/regularization/images 
-                --class_word person
+                --class_word person --no-test
 ```
 ### Fine-tuning using custom losses
 - Biometric loss
@@ -84,7 +84,7 @@ python scripts/stable_txt2img.py --ddim_eta 0.0
 
 
 ## Acknowledgment
-This repository is heavily dependent with code borrowed from [Dreambooth Stable Diffusion](https://github.com/XavierXiao/Dreambooth-Stable-Diffusion) repository. All changes made in the scripts and config files need to be incorporated to reproduce the results from the conference paper
+This repository is heavily dependent on code borrowed from [Dreambooth Stable Diffusion](https://github.com/XavierXiao/Dreambooth-Stable-Diffusion) repository. All changes made in the scripts and config files need to be incorporated to reproduce the results from the conference paper.
 
 ## Citation
 If you find this code useful or utilize it in your work, please cite:
