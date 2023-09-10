@@ -52,7 +52,7 @@ python main.py --base configs/stable-diffusion/v1-finetune_unfrozen.yaml
   python main.py --base configs/stable-diffusion/v1-finetune_contrastiveloss.yaml 
                 -t 
                 --actual_resume /path/to/original/stable-diffusion/sd-v1-4-full-ema.ckpt  
-                -n <job name> 
+                -n <job_name> 
                 --gpus 0, 
                 --data_root /path-to-training-images-folder
                 --reg_data_root /path-to-regularization-images-folder
@@ -73,7 +73,7 @@ python scripts/stable_txt2img.py --ddim_eta 0.0
                                  --n_iter 1 
                                  --scale 10.0 
                                  --ddim_steps 100  
-                                 --ckpt /path/to/saved/checkpoint/from/training
+                                 --ckpt /path-to-saved-checkpoint-from-training
                                  --prompt "photo of a <rare-token> <class> as <age-label>" 
 ```
 ### Evaluation
