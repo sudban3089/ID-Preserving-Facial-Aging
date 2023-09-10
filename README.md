@@ -3,7 +3,7 @@ This is the official implementation of **Identity-Preserving Aging of Face Image
 ![alt text](Outline.png)
 
 ## Usage
-Create the `ldm` environment by following the steps outlined in [Dreambooth Stable Diffusion](https://github.com/XavierXiao/Dreambooth-Stable-Diffusion). Check `environment.yaml` file.
+Create the `ldm` environment by following the steps outlined in [Dreambooth Stable Diffusion](https://github.com/XavierXiao/Dreambooth-Stable-Diffusion). Check `environment.yaml` file. Ensure that the environment is set up correctly before proceeding. 
 
 ## Training
 
