@@ -21,7 +21,7 @@ We need a **Regularization Set** that comprises images depicting distinct indivi
   
 Download the [Regularization Set](https://drive.google.com/file/d/1GmOjT5B-Dq2zstSm9DRafPMX9E7rByhd/view?usp=drive_link) used in our work or you can create your own regularization set but we cannot verify the performance with a custom regularization set. 
 
-We need a **Training Set** that comprises images of a specific individual on whom the facial aging will be applied. The training set enables the diffusion model to learn the identity-specific charctristics during training that are then transferred at the time of generation of images with aging/de-aging.
+We need a **Training Set** that comprises images of a specific individual on whom the facial aging will be applied. The training set enables the diffusion model to learn the identity-specific charctristics during training that are then transferred at the time of generation of images with aging/de-aging. This repo currently supports single subject-specific training. You can create a custom batch script for training multiple subjects simultaneously, ensure that the rare token is linked to *each* subject uniquely, otherwise it may result in inconsistent outputs or identity lapse.   
 
 ### Fine-tuning using default Dreambooth
 
@@ -31,8 +31,8 @@ python main.py --base configs/stable-diffusion/v1-finetune_unfrozen.yaml
                 --actual_resume /path/to/original/stable-diffusion/sd-v1-4-full-ema.ckpt  
                 -n <job name> 
                 --gpus 0, 
-                --data_root /root/to/training/images 
-                --reg_data_root /root/to/regularization/images 
+                --data_root /path-to-training-images-folder 
+                --reg_data_root /path-to-regularization-images-folder
                 --class_word person --no-test
 ```
 ### Fine-tuning using custom losses
@@ -43,8 +43,8 @@ python main.py --base configs/stable-diffusion/v1-finetune_unfrozen.yaml
                 --actual_resume /path/to/original/stable-diffusion/sd-v1-4-full-ema.ckpt  
                 -n <job name> 
                 --gpus 0, 
-                --data_root /root/to/training/images 
-                --reg_data_root /root/to/regularization/images 
+                --data_root /path-to-training-images-folder
+                --reg_data_root /path-to-regularization-images-folder
                 --class_word person
   ```
 - Contrastive loss
@@ -54,8 +54,8 @@ python main.py --base configs/stable-diffusion/v1-finetune_unfrozen.yaml
                 --actual_resume /path/to/original/stable-diffusion/sd-v1-4-full-ema.ckpt  
                 -n <job name> 
                 --gpus 0, 
-                --data_root /root/to/training/images 
-                --reg_data_root /root/to/regularization/images 
+                --data_root /path-to-training-images-folder
+                --reg_data_root /path-to-regularization-images-folder
                 --class_word person
   ```
 
