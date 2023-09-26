@@ -23,7 +23,7 @@ Download the [Regularization Set](https://drive.google.com/file/d/1GmOjT5B-Dq2zs
 
 We need a **Training Set** that comprises images of a specific individual on whom the facial aging will be applied. The training set enables the diffusion model to learn the identity-specific charctristics during training that are then transferred at the time of generation of images with aging/de-aging. This repo currently supports single subject-specific training. You can create a custom batch script for training multiple subjects simultaneously, ensure that the rare token is linked to *each* subject uniquely, otherwise it may result in inconsistent outputs or identity lapse.   
 
-### Fine-tuning using default Dreambooth
+<!-- ### Fine-tuning using default Dreambooth
 
 ```
 python main.py --base configs/stable-diffusion/v1-finetune_unfrozen.yaml 
@@ -34,7 +34,7 @@ python main.py --base configs/stable-diffusion/v1-finetune_unfrozen.yaml
                 --data_root /path-to-training-images-folder 
                 --reg_data_root /path-to-regularization-images-folder
                 --class_word person --no-test
-```
+``` -->
 ### Fine-tuning using custom losses
 - Biometric loss
   ```
