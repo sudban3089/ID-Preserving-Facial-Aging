@@ -74,7 +74,8 @@ python scripts/stable_txt2img.py --ddim_eta 0.0
                                  --scale 10.0 
                                  --ddim_steps 100  
                                  --ckpt /path-to-saved-checkpoint-from-training
-                                 --prompt "photo of a <rare-token> <class> as <age-label>" 
+                                 --prompt "photo of a <rare-token> <class> as <age-label>"
+                                 --outdir /directory to write output images
 ```
 ### Evaluation
 
