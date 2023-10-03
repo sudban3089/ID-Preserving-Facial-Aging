@@ -76,6 +76,7 @@ python scripts/stable_txt2img.py --ddim_eta 0.0
                                  --ckpt /path-to-saved-checkpoint-from-training
                                  --prompt "photo of a <rare-token> <class> as <age-label>"
                                  --outdir /directory to write output images
+                                 --config /path to the configs file .yaml that was used during fine-tuning
 ```
 ### Evaluation
 
