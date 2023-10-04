@@ -11,7 +11,7 @@ Create the `ldm` environment by following the steps outlined in [Dreambooth Stab
 We fine-tune a pre-trained stable diffusion model whose weights can be downloaded from [Hugging Face](https://huggingface.co/CompVis) model card. We use `sd-v1-4-full-ema.ckpt`. You can use any other model depending on your choice but we have not tested the reproducibility of the conference results with other models.
 
 ### Data preparation
-We need a **Regularization Set** that comprises images depicting distinct individuals (disjoint from the training set) depicting variations in age. We curated a set of 612 images from the [CelebA-Dialog dataset](https://mmlab.ie.cuhk.edu.hk/projects/CelebA/CelebA_Dialog.html) that serves as image-caption pairs in this work. The six age labels used in this work are as follows.
+We need a **Regularization Set** that comprises images depicting distinct individuals (disjoint from the training set) depicting variations in age. We curated a set of 612 images from the [CelebA-Dialog dataset](https://mmlab.ie.cuhk.edu.hk/projects/CelebA/CelebA_Dialog.html) (please cite the original authors) that serves as image-caption pairs in this work. The six age labels used in this work are as follows.
 - child
 - teenager
 - youngadults
