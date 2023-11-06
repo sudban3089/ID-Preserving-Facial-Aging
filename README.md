@@ -8,7 +8,7 @@ Create the `ldm` environment by following the steps outlined in [Dreambooth Stab
 ## Training
 
 ### Model weights
-We fine-tune a pre-trained stable diffusion model whose weights can be downloaded from [Hugging Face](https://huggingface.co/CompVis) model card. We use `sd-v1-4-full-ema.ckpt`. You can use any other model depending on your choice but we have not tested the reproducibility of the conference results with other models.
+We fine-tune a pre-trained stable diffusion model whose weights can be downloaded from [Hugging Face](https://huggingface.co/CompVis) model card. We use `sd-v1-4-full-ema.ckpt` and `v1-5-pruned.ckpt`. You can use any other model depending on your choice but we have not tested the reproducibility of the conference results with other models.
 
 ### Data preparation
 We need a **Regularization Set** that comprises images depicting distinct individuals (disjoint from the training set) depicting variations in age. We curated a set of 612 images from the [CelebA-Dialog dataset](https://mmlab.ie.cuhk.edu.hk/projects/CelebA/CelebA_Dialog.html) (please cite the original authors) that serves as image-caption pairs in this work. The six age labels used in this work are as follows.
@@ -58,6 +58,17 @@ python main.py --base configs/stable-diffusion/v1-finetune_unfrozen.yaml
                 --reg_data_root /path-to-regularization-images-folder
                 --class_word person --no-test
   ```
+- Cosine loss
+  ```
+  python main.py --base configs/stable-diffusion/v1-finetune_cosineloss.yaml 
+                -t 
+                --actual_resume /path/to/original/stable-diffusion/v1-5-pruned.ckpt  
+                -n <job_name> 
+                --gpus 0, 
+                --data_root /path-to-training-images-folder
+                --reg_data_root /path-to-regularization-images-folder
+                --class_word person --no-test
+  ```
 
 Note:
 1. `personalized_captionandimage.py` modifies the original script to include image-caption pairs. The age caption comes from the filename of the regularization set images.
@@ -81,8 +92,8 @@ python scripts/stable_txt2img.py --ddim_eta 0.0
 ### Evaluation
 
 - We perform face quality check using [EQFace](https://github.com/deepcam-cn/FaceQuality) where we download the pretrained model provided by the original authors and run `python test_quality.py --backbone backbone.pth --quality quality.path --file test_faces`, where `test_faces` indicate the age translated faces. We select a threshold of 0.4 to determine if a generated face should be retained or else, discarded.
-- We perform biometric matching (with ArcFace) and age computation using [deepface](https://github.com/serengil/deepface) library.
-- We use the official implementation of [AttGAN](https://github.com/LynnHo/AttGAN-Tensorflow), [Talk-to-Edit](https://github.com/yumingj/Talk-to-Edit) and [IPCGAN](https://github.com/dawei6875797/Face-Aging-with-Identity-Preserved-Conditional-Generative-Adversarial-Networks) for baseline comparison.
+- We perform biometric matching (with ArcFace) and age computation using [deepface](https://github.com/serengil/deepface) library. We perform biometric matching using [AdaFace](https://github.com/mk-minchul/AdaFace)
+- We use the official implementation of [AttGAN](https://github.com/LynnHo/AttGAN-Tensorflow), [Talk-to-Edit](https://github.com/yumingj/Talk-to-Edit), [IPCGAN](https://github.com/dawei6875797/Face-Aging-with-Identity-Preserved-Conditional-Generative-Adversarial-Networks) and [ProFusion](https://github.com/drboog/ProFusion) for baseline comparison.
 
 
 ## Acknowledgment
