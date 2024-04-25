@@ -110,4 +110,4 @@ year = {2023},
 }
 ```
 ## Update
-I have shared few training examples for learning purposes in the `IJCB2023_TrainExamples` folder for learning purposes. Please download the datasets from original authors for complete fine-tuning.
+I have shared few training examples in the `IJCB2023_TrainExamples` folder for learning purposes. Please download the datasets from original authors for complete fine-tuning.
