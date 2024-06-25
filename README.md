@@ -1,5 +1,5 @@
 # ID-Preserving-Facial-Aging
-This is the official implementation of **Identity-Preserving Aging of Face Images via Latent Diffusion Models** that has been accepted in International Joint Conference in Biometrics (IJCB 2023). Refer to [our paper](https://arxiv.org/abs/2307.08585).
+This is the official implementation of **Identity-Preserving Aging of Face Images via Latent Diffusion Models** that has been accepted in International Joint Conference in Biometrics (IJCB 2023) nd its extension to IEEE T-BIOM 2024. Refer to [our paper](https://arxiv.org/abs/2307.08585).
 ![alt text](objective_CR.png)
 
 ## Usage
@@ -107,6 +107,15 @@ author = {Sudipta Banerjee* and Govind Mittal* and Ameya Joshi and Chinmay Hegde
 booktitle = {IEEE International Joint Conference on Biometrics (IJCB)},
 title = {Identity-Preserving Aging of Face Images via Latent Diffusion Models},
 year = {2023},
+}
+```
+
+```
+@INPROCEEDINGS {IDFaceAging_TBIOM2024,
+author = {Sudipta Banerjee* and Govind Mittal* and Ameya Joshi and Sai Pranaswi Mullangi and Chinmay Hegde and Nasir Memon},
+booktitle = {IEEE Transactions on Biometrics, Behavior, and Identity Science (T-BIOM)},
+title = {Identity-Aware Facial Age Editing Using Latent Diffusion},
+year = {2024},
 }
 ```
 ## Update
