@@ -54,7 +54,7 @@ model:
         params:
           embed_dim: 4
           monitor: val/rec_loss
-          biometric_weight: 0.1
+          # biometric_weight: 0.1 -- please comment out
           ddconfig:
             double_z: true
             z_channels: 4
